@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
-# installs and configures nginx web server to listen to port 80 and
-# serves a page with content `Hello World!` when / is querried
-
-apt-get -y install
-sudo apt get
-sudo apt install nginx
-sudo ufw app list
-sudo ufw allow 'Nginx HTTP'
-sudo ufw status
-systemctl status nginx
-curl -4 icanhazip.com
+# Install Nginx and the init file have only a message
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install nginx -y
+sudo service nginx start
+echo "Hello World!" | tee /var/www/html/index.nginx-debian.html
