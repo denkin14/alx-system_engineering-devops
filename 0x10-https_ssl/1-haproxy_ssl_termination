@@ -32,12 +32,19 @@ defaults
 	errorfile 502 /etc/haproxy/errors/502.http
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
-h
+
+#start of parameters
+
 frontend denkin.tech-http-frontend
 	bind *:80
 	http-request set-header 
 	X-Forwarded-Proto http
 	default_backend	 denkin.tech-backend
+
+frontend  denkin14.tech-https-frontend
+	bind *:443 ssl crt /etc/ssl/denkin.tech.pem
+	http-request set-header X-Forwarded-Proto https
+        default_backend dennis.tech-backend
 
 
 backend denkin.tech-backend
